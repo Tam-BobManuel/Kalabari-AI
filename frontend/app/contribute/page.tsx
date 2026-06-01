@@ -60,13 +60,13 @@ export default function ContributePage() {
   return (
     <main className="bg-background min-h-screen">
       {/* Header */}
-      <div className="border-b border-border bg-card">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="border-b border-border bg-card/80 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-slide-up">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-3 text-balance">
             Contribute to LinguaAI
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl text-balance">
-            Help improve our translation models by contributing translation datasets and cultural knowledge. Together, we're building better language technology.
+          <p className="text-lg text-muted-foreground max-w-2xl text-balance animate-fade-in stagger-1">
+            Help improve our translation models by contributing translation datasets and cultural knowledge. Together, we&apos;re building better language technology.
           </p>
         </div>
       </div>
@@ -74,17 +74,17 @@ export default function ContributePage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Impact Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-xl p-6 animate-slide-up stagger-1 hover-lift">
             <Users className="w-8 h-8 text-primary mb-4" />
             <div className="text-3xl font-bold text-foreground mb-2">1,250+</div>
             <p className="text-sm text-muted-foreground">Contributors</p>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-xl p-6 animate-slide-up stagger-2 hover-lift">
             <Target className="w-8 h-8 text-primary mb-4" />
             <div className="text-3xl font-bold text-foreground mb-2">50K+</div>
             <p className="text-sm text-muted-foreground">Translation Pairs</p>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-xl p-6 animate-slide-up stagger-3 hover-lift">
             <Upload className="w-8 h-8 text-primary mb-4" />
             <div className="text-3xl font-bold text-foreground mb-2">100+</div>
             <p className="text-sm text-muted-foreground">Language Pairs</p>
@@ -93,8 +93,8 @@ export default function ContributePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Upload Section */}
-          <div>
-            <div className="bg-card border border-border rounded-2xl p-8">
+          <div className="animate-slide-up stagger-2">
+            <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-md transition-shadow duration-300">
               <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
                 <Upload className="w-6 h-6 text-primary" />
                 Upload Dataset
@@ -113,7 +113,7 @@ export default function ContributePage() {
                       type="file"
                       name="file"
                       accept=".csv,.json,.txt"
-                      className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
+                      className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 file:transition-colors file:duration-200"
                       required
                     />
                   </div>
@@ -129,7 +129,7 @@ export default function ContributePage() {
                   <select
                     name="dataType"
                     defaultValue="general"
-                    className="w-full bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-shadow duration-200"
                   >
                     <option value="general">General Translations</option>
                     <option value="technical">Technical Terms</option>
@@ -146,13 +146,13 @@ export default function ContributePage() {
                     type="text"
                     name="languagePairs"
                     placeholder="en-es, en-fr, en-de"
-                    className="w-full bg-background border border-border rounded-lg px-3 py-2 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full bg-background border border-border rounded-lg px-3 py-2 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-shadow duration-200"
                   />
                 </div>
 
                 {/* Status Messages */}
                 {uploadStatus === 'success' && (
-                  <div className="flex gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <div className="flex gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-lg animate-slide-up">
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">{message}</p>
@@ -161,7 +161,7 @@ export default function ContributePage() {
                 )}
 
                 {uploadStatus === 'error' && (
-                  <div className="flex gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <div className="flex gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-lg animate-slide-up">
                     <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">{message}</p>
@@ -172,7 +172,7 @@ export default function ContributePage() {
                 <Button
                   type="submit"
                   disabled={uploadStatus === 'uploading'}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 hover-lift"
                 >
                   {uploadStatus === 'uploading' ? 'Uploading...' : 'Upload Dataset'}
                 </Button>
@@ -181,8 +181,8 @@ export default function ContributePage() {
           </div>
 
           {/* Download Assets Section */}
-          <div>
-            <div className="bg-card border border-border rounded-2xl p-8">
+          <div className="animate-slide-up stagger-3">
+            <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-md transition-shadow duration-300">
               <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
                 <Download className="w-6 h-6 text-primary" />
                 Download Assets
@@ -193,7 +193,7 @@ export default function ContributePage() {
 
               <div className="space-y-3">
                 {/* Template Assets */}
-                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 hover:border-primary/20 transition-all duration-200 hover-lift">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex gap-3">
                       <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -206,14 +206,14 @@ export default function ContributePage() {
                       onClick={() => downloadAssets('template-csv.csv')}
                       variant="ghost"
                       size="sm"
-                      className="text-primary hover:bg-primary/10"
+                      className="text-primary hover:bg-primary/10 hover-lift"
                     >
                       Download
                     </Button>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 hover:border-primary/20 transition-all duration-200 hover-lift">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex gap-3">
                       <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -226,14 +226,14 @@ export default function ContributePage() {
                       onClick={() => downloadAssets('template-json.json')}
                       variant="ghost"
                       size="sm"
-                      className="text-primary hover:bg-primary/10"
+                      className="text-primary hover:bg-primary/10 hover-lift"
                     >
                       Download
                     </Button>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 hover:border-primary/20 transition-all duration-200 hover-lift">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex gap-3">
                       <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -246,14 +246,14 @@ export default function ContributePage() {
                       onClick={() => downloadAssets('contribution-guide.pdf')}
                       variant="ghost"
                       size="sm"
-                      className="text-primary hover:bg-primary/10"
+                      className="text-primary hover:bg-primary/10 hover-lift"
                     >
                       Download
                     </Button>
                   </div>
                 </div>
 
-                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                <div className="border border-border rounded-lg p-4 hover:bg-secondary/30 hover:border-primary/20 transition-all duration-200 hover-lift">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex gap-3">
                       <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -266,7 +266,7 @@ export default function ContributePage() {
                       onClick={() => downloadAssets('quality-checklist.txt')}
                       variant="ghost"
                       size="sm"
-                      className="text-primary hover:bg-primary/10"
+                      className="text-primary hover:bg-primary/10 hover-lift"
                     >
                       Download
                     </Button>
@@ -278,10 +278,10 @@ export default function ContributePage() {
         </div>
 
         {/* Guidelines Section */}
-        <div className="bg-card border border-border rounded-2xl p-8 mb-16">
+        <div className="bg-card border border-border rounded-2xl p-8 mb-16 animate-fade-in stagger-4 hover:shadow-md transition-shadow duration-300">
           <h2 className="text-2xl font-bold text-foreground mb-8">Contribution Guidelines</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
+            <div className="animate-slide-up stagger-1 hover-lift rounded-lg p-3">
               <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold">1</span>
                 Data Quality
@@ -290,7 +290,7 @@ export default function ContributePage() {
                 Ensure translations are accurate, contextually appropriate, and free of typos or grammatical errors.
               </p>
             </div>
-            <div>
+            <div className="animate-slide-up stagger-2 hover-lift rounded-lg p-3">
               <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold">2</span>
                 Format Consistency
@@ -299,7 +299,7 @@ export default function ContributePage() {
                 Follow our templates and ensure consistent formatting across your entire dataset.
               </p>
             </div>
-            <div>
+            <div className="animate-slide-up stagger-3 hover-lift rounded-lg p-3">
               <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold">3</span>
                 Cultural Context
@@ -308,7 +308,7 @@ export default function ContributePage() {
                 Include cultural nuances and context-specific translations that improve model understanding.
               </p>
             </div>
-            <div>
+            <div className="animate-slide-up stagger-4 hover-lift rounded-lg p-3">
               <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold">4</span>
                 Licensing
@@ -321,14 +321,14 @@ export default function ContributePage() {
         </div>
 
         {/* Recognition Section */}
-        <div className="text-center">
+        <div className="text-center animate-fade-in stagger-5">
           <h2 className="text-2xl font-bold text-foreground mb-4">Top Contributors</h2>
           <p className="text-muted-foreground mb-8">
             We recognize and credit all community contributors in our dataset documentation.
           </p>
           <Button
             asChild
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground hover-lift"
           >
             <Link href="/contributors">View All Contributors</Link>
           </Button>

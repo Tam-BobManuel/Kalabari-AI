@@ -133,17 +133,17 @@ export function Hero() {
     <section className="relative overflow-hidden bg-background pt-12 pb-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 text-balance">
+        <div className="text-center mb-8 animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 text-balance animate-slide-up">
             Break Language Barriers Instantly
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance animate-fade-in stagger-1">
             Translate text, documents, and conversations with AI-powered accuracy in 100+ languages
           </p>
         </div>
 
         {/* Translation Interface */}
-        <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden mb-8">
+        <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden mb-8 animate-scale-in stagger-2 hover:shadow-md transition-shadow duration-300">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x md:divide-border">
             {/* Source Language */}
             <div className="p-6">
@@ -156,7 +156,7 @@ export function Hero() {
               <select
                 value={sourceLanguage}
                 onChange={(e) => setSourceLanguage(e.target.value)}
-                className="mb-3 w-full bg-background border border-border rounded px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="mb-3 w-full bg-background border border-border rounded px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-shadow duration-200"
               >
                 {languages.map((lang) => (
                   <option key={lang.code} value={lang.code}>
@@ -168,7 +168,7 @@ export function Hero() {
                 value={sourceText}
                 onChange={(e) => setSourceText(e.target.value)}
                 placeholder="Enter text to translate..."
-                className="w-full h-40 bg-background border border-border rounded-lg p-4 text-foreground placeholder-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full h-40 bg-background border border-border rounded-lg p-4 text-foreground placeholder-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary transition-shadow duration-200"
               />
               <div className="mt-3 text-xs text-muted-foreground">
                 {sourceText.length} characters
@@ -183,7 +183,7 @@ export function Hero() {
               <select
                 value={targetLanguage}
                 onChange={(e) => setTargetLanguage(e.target.value)}
-                className="mb-3 w-full bg-background border border-border rounded px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="mb-3 w-full bg-background border border-border rounded px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-shadow duration-200"
               >
                 {languages.map((lang) => (
                   <option key={lang.code} value={lang.code}>
@@ -203,7 +203,7 @@ export function Hero() {
                   disabled={!translatedText}
                   size="sm"
                   variant="ghost"
-                  className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover-lift"
                 >
                   Copy
                 </Button>
@@ -212,7 +212,7 @@ export function Hero() {
                   disabled={!translatedText || isSaving}
                   size="sm"
                   variant="ghost"
-                  className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="text-xs text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover-lift"
                 >
                   {isSaving ? 'Saving...' : 'Save'}
                 </Button>
@@ -223,13 +223,13 @@ export function Hero() {
           {/* Translation Button */}
           <div className="border-t border-border bg-muted/30 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Powered by advanced AI models
             </div>
             <Button
               onClick={handleTranslate}
               disabled={isTranslating}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed hover-lift group"
             >
               {isTranslating ? (
                 <>
@@ -239,7 +239,7 @@ export function Hero() {
               ) : (
                 <>
                   Translate
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </>
               )}
             </Button>
@@ -248,15 +248,15 @@ export function Hero() {
 
         {/* Features */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="text-center">
+          <div className="text-center animate-slide-up stagger-3 hover-lift rounded-lg p-3">
             <div className="text-sm font-medium text-foreground mb-1">Instant Results</div>
             <div className="text-xs text-muted-foreground">Get translations in milliseconds</div>
           </div>
-          <div className="text-center">
+          <div className="text-center animate-slide-up stagger-4 hover-lift rounded-lg p-3">
             <div className="text-sm font-medium text-foreground mb-1">100+ Languages</div>
             <div className="text-xs text-muted-foreground">Support for all major languages</div>
           </div>
-          <div className="text-center">
+          <div className="text-center animate-slide-up stagger-5 hover-lift rounded-lg p-3">
             <div className="text-sm font-medium text-foreground mb-1">High Accuracy</div>
             <div className="text-xs text-muted-foreground">Context-aware AI translations</div>
           </div>

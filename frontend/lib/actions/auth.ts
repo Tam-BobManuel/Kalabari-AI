@@ -80,6 +80,31 @@ export async function signOut(): Promise<{ success: boolean; error?: AuthError }
   }
 }
 
+export async function signInWithOAuth(
+  provider: 'google' | 'apple'
+): Promise<{ url?: string; error?: AuthError }> {
+  try {
+    const supabase = await createClient()
+
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
+    })
+
+    if (error) {
+      console.error('[v0] OAuth signin error:', error)
+      return { error: { message: error.message } }
+    }
+
+    return { url: data.url }
+  } catch (error) {
+    console.error('[v0] Unexpected OAuth signin error:', error)
+    return { error: { message: 'An unexpected error occurred' } }
+  }
+}
+
 export async function getCurrentUser() {
   try {
     const supabase = await createClient()

@@ -117,17 +117,17 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-card/80 backdrop-blur-sm animate-slide-down">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Globe className="w-8 h-8 text-primary" />
+          <Link href="/" className="flex items-center gap-2 group">
+            <Globe className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />
             <span className="text-xl font-bold text-foreground">LinguaAI</span>
-          </div>
+          </Link>
 
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">{user?.email}</span>
             <Link href="/">
-              <Button variant="ghost" size="sm" className="text-foreground">
+              <Button variant="ghost" size="sm" className="text-foreground hover-lift">
                 <Home className="w-4 h-4" />
               </Button>
             </Link>
@@ -135,7 +135,7 @@ export default function DashboardPage() {
               onClick={handleSignOut}
               variant="ghost"
               size="sm"
-              className="text-foreground"
+              className="text-foreground hover-lift"
             >
               <LogOut className="w-4 h-4" />
             </Button>
@@ -147,8 +147,8 @@ export default function DashboardPage() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Welcome Card */}
-          <div className="md:col-span-3">
-            <div className="bg-card border border-border rounded-2xl p-8">
+          <div className="md:col-span-3 animate-slide-up">
+            <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-md transition-shadow duration-300">
               <h1 className="text-3xl font-bold text-foreground mb-2">
                 Welcome back, {user?.email?.split('@')[0]}!
               </h1>
@@ -159,7 +159,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-xl p-6 animate-slide-up stagger-1 hover-lift">
             <div className="text-sm font-medium text-muted-foreground mb-2">
               Translations Today
             </div>
@@ -171,14 +171,14 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-xl p-6 animate-slide-up stagger-2 hover-lift">
             <div className="text-sm font-medium text-muted-foreground mb-2">
               Total Translations
             </div>
             <div className="text-3xl font-bold text-foreground">{translations.length}</div>
           </div>
 
-          <div className="bg-card border border-border rounded-xl p-6">
+          <div className="bg-card border border-border rounded-xl p-6 animate-slide-up stagger-3 hover-lift">
             <div className="text-sm font-medium text-muted-foreground mb-2">
               Languages Used
             </div>
@@ -188,7 +188,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Recent Translations Section */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 animate-fade-in stagger-4">
             <div className="bg-card border border-border rounded-2xl p-8">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold text-foreground">Recent Translations</h2>
@@ -199,17 +199,17 @@ export default function DashboardPage() {
                 <div className="text-center py-12">
                   <p className="text-muted-foreground mb-4">No translations yet</p>
                   <Link href="/">
-                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground hover-lift">
                       Start Translating
                     </Button>
                   </Link>
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {translations.map((translation) => (
+                  {translations.map((translation, i) => (
                     <div
                       key={translation.id}
-                      className="border border-border rounded-lg p-4 hover:bg-secondary/30 transition-colors"
+                      className={`border border-border rounded-lg p-4 hover:bg-secondary/30 hover:border-primary/20 transition-all duration-200 hover-lift animate-slide-up stagger-${Math.min(i + 1, 6)}`}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
@@ -231,7 +231,7 @@ export default function DashboardPage() {
                             onClick={() => handleCopyTranslation(translation.translated_text)}
                             size="sm"
                             variant="ghost"
-                            className="text-muted-foreground hover:text-foreground"
+                            className="text-muted-foreground hover:text-foreground hover-lift"
                           >
                             <Copy className="w-4 h-4" />
                           </Button>
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                             onClick={() => handleDeleteTranslation(translation.id)}
                             size="sm"
                             variant="ghost"
-                            className="text-muted-foreground hover:text-red-500"
+                            className="text-muted-foreground hover:text-red-500 hover-lift"
                           >
                             <Trash2 className="w-4 h-4" />
                           </Button>

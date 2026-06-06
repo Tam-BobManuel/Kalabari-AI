@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show-sql: false
+  flyway:
+    clean-disabled: true
+
+model:
+  server:
+    timeout-ms: 60000

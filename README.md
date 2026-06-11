@@ -95,3 +95,6 @@ Notes:
   so user history is served by the frontend via Supabase (RLS-protected), not the backend's JPA history layer.
   That JPA history/dataset code in the backend is currently dormant; wire it up (and switch the decoder to the
   HS256 shared secret) only once you decide the backend should own user data.
+
+
+.
